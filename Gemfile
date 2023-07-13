@@ -6,6 +6,9 @@ ruby '3.2.0'
 gem 'rails-controller-testing'
 gem 'rspec-rails'
 
+gem 'devise'
+gem 'devise-jwt'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.6'
 
