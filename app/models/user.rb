@@ -6,6 +6,6 @@ class User < ApplicationRecord
   has_many :services, through: :reservations
 
   def jwt_payload
-    super
+    super.merge('name' => self.name)
   end
 end
