@@ -10,14 +10,14 @@ class Users::PasswordsController < Devise::PasswordsController
       render json: {
         status: {code: 200, message: "Password reset Email Resend successfully"}
       }, status: :ok
-    elsif resource && resource.jti.nil?
+    elsif request.method == "POST" && resource && resource.jti.nil?
       render json: {
         status: {code: 200, message: "User does not exist",
         data: resource}
       }, status: :ok
-    elsif request.method == "PUT"
+    elsif request.method == "PUT" && resource.errors.empty?
       render json: {
-        status: { code: 200, message: "Account deleted successfully."}
+        status: { code: 200, message: "Password change successfully"}
       }, status: :ok
     else
       render json: {
