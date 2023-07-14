@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def respond_with(resource, options={})
-    if request.method == "POST" && resource.persisted?
+    if resource.persisted?
       render json: {
         status: {code: 200, message: "Signed up sucessfully.",
         data: resource}
@@ -58,7 +58,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

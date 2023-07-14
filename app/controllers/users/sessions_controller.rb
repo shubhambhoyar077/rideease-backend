@@ -6,10 +6,17 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def respond_with(resource, options={})
-    render json: {
-      status: {code: 200, message: 'Logged in sucessfully.',
-      data: current_user}
-    }, status: :ok
+    if current_user
+      render json: {
+        status: {code: 200, message: 'Logged in sucessfully.',
+        data: current_user}
+      }, status: :ok
+    else
+      render json: {
+        status: 401,
+        message: "Please confirm your email address before continuing."
+      }, status: :unauthorized
+    end
   end
 
   def respond_to_on_destroy
