@@ -6,15 +6,20 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   private
 
   def respond_with(resource, options={})
-    if successfully_sent?(resource)
+    if resource.is_a?(Hash) && resource.empty?
       render json: {
-        status: {code: 200, message: "Conformation mail send successfully",
+        status: {code: 200, message: "Email Resend successfully"}
+      }, status: :ok
+    elsif resource && resource.jti.nil?
+      render json: {
+        status: {code: 200, message: "User does not exist",
         data: resource}
       }, status: :ok
     else
       render json: {
-        status: {code: 422, message: "User couldn't be created successfully. #{resource.errors.full_messages.to_sentence}"}
-      }, status: :unprocessable_entity
+        status: {code: 200, message: "User already exist",
+        data: resource}
+      }, status: :ok
     end
   end
 
