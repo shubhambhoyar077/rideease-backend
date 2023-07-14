@@ -8,7 +8,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   def respond_with(resource, options={})
     if resource.is_a?(Hash) && resource.empty?
       render json: {
-        status: {code: 200, message: "Email Resend successfully"}
+        status: {code: 200, message: "Confirmation Email Resend successfully"}
       }, status: :ok
     elsif resource && resource.jti.nil?
       render json: {
