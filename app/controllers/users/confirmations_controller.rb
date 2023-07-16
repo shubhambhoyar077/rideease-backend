@@ -31,7 +31,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
         }, status: :ok
       else
         render json: {
-          status: {code: 422, message: "Error please try again. #{resource.errors.full_messages.to_sentence}"}
+          status: {code: 422, message: "#{resource.errors[0].type}"}
         }, status: :unprocessable_entity
       end
     end
