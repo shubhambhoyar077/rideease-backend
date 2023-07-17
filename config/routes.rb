@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   # root "articles#index"
   namespace :api do
     resources :services, only:[:index, :show, :create]
-    resources :reservation, only:[:show, :create]
+    resources :reservations, only:[:show, :create]
   end
 end
