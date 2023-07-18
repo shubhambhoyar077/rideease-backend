@@ -1,23 +1,22 @@
-# frozen_string_literal: true
-
 class Users::RegistrationsController < Devise::RegistrationsController
   respond_to :json
 
   private
 
-  def respond_with(resource, options={})
+  def respond_with(resource, _options = {})
     if resource.persisted?
       render json: {
-        status: {code: 200, message: "Signed up sucessfully Please check your email.",
-        data: resource}
+        status: { code: 200, message: 'Signed up sucessfully Please check your email.',
+                  data: resource }
       }, status: :ok
-    elsif request.method == "DELETE"
+    elsif request.method == 'DELETE'
       render json: {
-        status: { code: 200, message: "Account deleted successfully."}
+        status: { code: 200, message: 'Account deleted successfully.' }
       }, status: :ok
     else
       render json: {
-        status: {code: 422, message: "User couldn't be created successfully. #{resource.errors.full_messages.to_sentence}"}
+        status: { code: 422, message: "User couldn't be created successfully.
+          #{resource.errors.full_messages.to_sentence}" }
       }, status: :unprocessable_entity
     end
   end
@@ -57,8 +56,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
-
-  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

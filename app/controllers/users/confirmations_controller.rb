@@ -1,40 +1,38 @@
-# frozen_string_literal: true
-
 class Users::ConfirmationsController < Devise::ConfirmationsController
   respond_to :json
 
   private
 
-  def respond_with(resource, options={})
+  def respond_with(resource, _options = {})
     if resource.is_a?(Hash) && resource.empty?
       render json: {
-        status: {code: 200, message: "Confirmation Email Resend successfully"}
+        status: { code: 200, message: 'Confirmation Email Resend successfully' }
       }, status: :ok
     elsif resource && resource.jti.nil?
       render json: {
-        status: {code: 200, message: "User does not exist",
-        data: resource}
+        status: { code: 200, message: 'User does not exist',
+                  data: resource }
       }, status: :ok
     else
       render json: {
-        status: {code: 200, message: "User already exist",
-        data: resource}
+        status: { code: 200, message: 'User already exist',
+                  data: resource }
       }, status: :ok
     end
   end
 
-    def respond_with_navigational(resource, options={})
-      if resource.errors.empty?
-        render json: {
-          status: {code: 200, message: "User conform successfully",
-          data: resource}
-        }, status: :ok
-      else
-        render json: {
-          status: {code: 422, message: "#{resource.errors[0].type}"}
-        }, status: :unprocessable_entity
-      end
+  def respond_with_navigational(resource, _options = {})
+    if resource.errors.empty?
+      render json: {
+        status: { code: 200, message: 'User conform successfully',
+                  data: resource }
+      }, status: :ok
+    else
+      render json: {
+        status: { code: 422, message: resource.errors[0].type.to_s }
+      }, status: :unprocessable_entity
     end
+  end
   # GET /resource/confirmation/new
   # def new
   #   super

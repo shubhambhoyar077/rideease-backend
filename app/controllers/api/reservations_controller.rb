@@ -1,7 +1,6 @@
 class Api::ReservationsController < ApplicationController
   before_action :authenticate_user!
   def index
-
     @reservations = current_user.reservations.includes(:service)
     @reservation_data = @reservations.map do |reservation|
       { reservation:, service: reservation.service }
@@ -26,8 +25,8 @@ class Api::ReservationsController < ApplicationController
   private
 
   def current_user
-    jwt_payload = JWT.decode(request.headers['Authorization'].split(' ')[1], 
-    Rails.application.credentials.fetch(:secret_key_base)).first
-    current_user = User.find(jwt_payload['sub'])
+    jwt_payload = JWT.decode(request.headers['Authorization'].split[1],
+                             Rails.application.credentials.fetch(:secret_key_base)).first
+    User.find(jwt_payload['sub'])
   end
 end

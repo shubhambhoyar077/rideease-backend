@@ -1,27 +1,31 @@
-# frozen_string_literal: true
-
 class Users::PasswordsController < Devise::PasswordsController
   respond_to :json
 
   private
 
-  def respond_with(resource, options={})
+  def respond_with(resource, _options = {})
     if resource.is_a?(Hash) && resource.empty?
       render json: {
-        status: {code: 200, message: "Password reset Email Resend successfully"}
+        status: { code: 200, message: 'Password reset Email Resend successfully' }
       }, status: :ok
-    elsif request.method == "POST" && resource && resource.jti.nil?
+    else
+      password_change_msg(resource, _options = {})
+    end
+  end
+
+  def password_change_msg(resource, _options = {})
+    if request.method == 'POST' && resource && resource.jti.nil?
       render json: {
-        status: {code: 200, message: "User does not exist",
-        data: resource}
+        status: { code: 200, message: 'User does not exist',
+                  data: resource }
       }, status: :ok
-    elsif request.method == "PUT" && resource.errors.empty?
+    elsif request.method == 'PUT' && resource.errors.empty?
       render json: {
-        status: { code: 200, message: "Password change successfully"}
+        status: { code: 200, message: 'Password change successfully' }
       }, status: :ok
     else
       render json: {
-        status: {code: 422, message: "Error. #{resource.errors.full_messages.to_sentence}"}
+        status: { code: 422, message: "Error. #{resource.errors.full_messages.to_sentence}" }
       }, status: :unprocessable_entity
     end
   end
