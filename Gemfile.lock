@@ -89,7 +89,7 @@ GEM
     dry-auto_inject (1.0.1)
       dry-core (~> 1.0)
       zeitwerk (~> 2.6)
-    dry-configurable (1.0.1)
+    dry-configurable (1.1.0)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
     dry-core (1.0.0)
@@ -101,7 +101,7 @@ GEM
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
-    irb (1.7.2)
+    irb (1.7.4)
       reline (>= 0.3.6)
     jwt (2.7.1)
     loofah (2.21.3)
@@ -116,7 +116,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.18.1)
-    msgpack (1.7.1)
+    msgpack (1.7.2)
     net-imap (0.3.6)
       date
       net-protocol
@@ -233,7 +233,7 @@ DEPENDENCIES
   tzinfo-data
 
 RUBY VERSION
-   ruby 3.2.0p0
+   ruby 3.2.2p53
 
 BUNDLED WITH
    2.4.13

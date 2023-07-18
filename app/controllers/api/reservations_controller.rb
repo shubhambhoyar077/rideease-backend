@@ -26,7 +26,7 @@ class Api::ReservationsController < ApplicationController
 
   def current_user
     jwt_payload = JWT.decode(request.headers['Authorization'].split[1],
-                             Rails.application.credentials.fetch(:secret_key_base)).first
+      ENV['DEVISE_JWT_SECRET_KEY']).first
     User.find(jwt_payload['sub'])
   end
 end
