@@ -35,7 +35,7 @@ class Api::ServicesController < ApplicationController
 
   # DELETE /services/1
   def destroy
-    @service = Service.find(params[:id])
+    @service = set_service
     @service.reservations.destroy_all
     if @service.destroy
       render json: { message: 'service deleted successfully' }, status: :ok
