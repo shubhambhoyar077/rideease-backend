@@ -20,8 +20,8 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: ngeelani48
-  password: Wajeeh123
+  username: postgres
+  password: 12345
 
 development:
   <<: *default
@@ -84,5 +84,5 @@ test:
 production:
   <<: *default
   database: rideeas_backend_production
-  username: ngeelani48
-  password: Wajeeh123
+  username: postgres
+  password: 12345
