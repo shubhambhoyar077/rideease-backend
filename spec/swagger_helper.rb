@@ -32,6 +32,18 @@ RSpec.configure do |config|
           }
         }
       ]
+    },
+    'v1/swagger.json' => {
+     # note the new Open API 3.0 compliant security structure here, under "components"
+      components: {
+        securitySchemes: {
+          bearer_auth: {
+            type: :apiKey,
+            name: 'Authorization',
+            in: :header
+          }
+        }
+      }
     }
   }
 

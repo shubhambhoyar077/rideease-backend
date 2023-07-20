@@ -76,29 +76,101 @@ paths:
           description: Car not found
         '406':
           description: unsupported accept header
-    delete:
-      summary: Delete a car
+  "/users/sign_in":
+    post:
+      summary: User Sign In
       tags:
-      - Cars
-      parameters:
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: string
+      - Users
+      parameters: []
       responses:
         '200':
-          description: Car
+          description: Logged in successfully
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  message: Deleted
-        '404':
-          description: Car not found
-        '406':
-          description: unsupported accept header
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+                    required:
+                    - code
+                    - message
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      email:
+                        type: string
+                    required:
+                    - id
+                    - name
+                    - email
+                required:
+                - status
+                - data
+        '401':
+          description: Couldn't find an active session
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                  message:
+                    type: string
+                required:
+                - status
+                - message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  email:
+                    type: string
+                  password:
+                    type: string
+              required:
+              - email
+              - password
+  "/users/sign_out":
+    delete:
+      summary: User Sign Out
+      tags:
+      - Users
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Logged out successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                  message:
+                    type: string
+                required:
+                - status
+                - message
 servers:
 - url: http://{defaultHost}
   variables:
