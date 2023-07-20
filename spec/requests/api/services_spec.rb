@@ -7,7 +7,7 @@ RSpec.describe 'Api::Services', type: :request do
 
       get 'Retrieves a cars' do
         tags 'Cars'
-        produces 'application/json', 'application/xml'
+        produces 'application/json'
 
         # request_body_example value: { some_field: 'Foo' }, name: 'basic', summary: 'Request example description'
   
@@ -16,15 +16,17 @@ RSpec.describe 'Api::Services', type: :request do
             properties: {
               id: { type: :integer },
               name: { type: :string },
-              image: { type: :string }
+              image: { type: :string },
+              price: {type: :string},
+              details: {type: :string},
             },
-            required: [ 'id', 'name', 'image' ]
+            required: [ 'id', 'name', 'image', 'details', 'price' ]
   
           let(:id) { Service.create(name: 'foo', image: 'bar.jpg').id }
           run_test!
         end
   
-        response '404', 'blog not found' do
+        response '404', 'Car not found' do
           let(:id) { 'invalid' }
           run_test!
         end
