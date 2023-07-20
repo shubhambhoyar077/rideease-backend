@@ -1,0 +1,52 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  '/api/services':
+    get:
+      summary: Retrieves a cars
+      tags:
+        - Cars
+      responses:
+        '200':
+          description: cars list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  image:
+                    type: string
+                required:
+                  - id
+                  - name
+                  - image
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  image:
+                    type: string
+                required:
+                  - id
+                  - name
+                  - image
+        '404':
+          description: blog not found
+        '406':
+          description: unsupported accept header
+servers:
+  - url: http://{defaultHost}
+    variables:
+      defaultHost:
+        default: www.example.com
