@@ -4,11 +4,11 @@ info:
   title: API V1
   version: v1
 paths:
-  '/api/services':
+  "/api/services":
     get:
       summary: Retrieves a cars
       tags:
-        - Cars
+      - Cars
       responses:
         '200':
           description: cars list
@@ -23,11 +23,36 @@ paths:
                     type: string
                   image:
                     type: string
+                  price:
+                    type: string
+                  details:
+                    type: string
                 required:
-                  - id
-                  - name
-                  - image
-            application/xml:
+                - id
+                - name
+                - image
+                - details
+                - price
+        '404':
+          description: Car not found
+        '406':
+          description: unsupported accept header
+  "/api/services/{id}":
+    get:
+      summary: Retrieves a car
+      tags:
+      - Cars
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Car
+          content:
+            application/json:
               schema:
                 type: object
                 properties:
@@ -37,16 +62,45 @@ paths:
                     type: string
                   image:
                     type: string
+                  price:
+                    type: string
+                  details:
+                    type: string
                 required:
-                  - id
-                  - name
-                  - image
+                - id
+                - name
+                - image
+                - details
+                - price
         '404':
-          description: blog not found
+          description: Car not found
+        '406':
+          description: unsupported accept header
+    delete:
+      summary: Delete a car
+      tags:
+      - Cars
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Car
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message: Deleted
+        '404':
+          description: Car not found
         '406':
           description: unsupported accept header
 servers:
-  - url: http://{defaultHost}
-    variables:
-      defaultHost:
-        default: www.example.com
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: 127.0.0.1:4000
