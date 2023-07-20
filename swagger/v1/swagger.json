@@ -120,9 +120,9 @@
         }
       }
     },
-    "/users/sign_in": {
+    "/users": {
       "post": {
-        "summary": "User Sign In",
+        "summary": "User Sign Up",
         "tags": [
           "Users"
         ],
@@ -131,7 +131,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Logged in successfully",
+            "description": "SignUp successfully please check your email",
             "content": {
               "application/json": {
                 "schema": {
@@ -145,30 +145,31 @@
                         },
                         "message": {
                           "type": "string"
+                        },
+                        "data": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "email": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "email"
+                          ]
                         }
                       },
                       "required": [
                         "code",
-                        "message"
-                      ]
-                    },
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "integer"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "email": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "id",
-                        "name",
-                        "email"
+                        "message",
+                        "data"
                       ]
                     }
                   },
@@ -210,17 +211,141 @@
                 "type": "object",
                 "properties": {
                   "user": {
-                    "email": {
-                      "type": "string"
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      },
+                      "password": {
+                        "type": "string"
+                      }
                     },
-                    "password": {
-                      "type": "string"
-                    }
+                    "required": [
+                      "email",
+                      "password"
+                    ]
                   }
                 },
                 "required": [
-                  "email",
-                  "password"
+                  "user"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/sign_in": {
+      "post": {
+        "summary": "User Sign In",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+
+        ],
+        "responses": {
+          "200": {
+            "description": "Logged in successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "data": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "email": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name",
+                            "email"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message",
+                        "data"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Couldn't find an active session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "message"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "email": {
+                        "type": "string"
+                      },
+                      "password": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "email",
+                      "password"
+                    ]
+                  }
+                },
+                "required": [
+                  "user"
                 ]
               }
             }
@@ -261,6 +386,96 @@
                     "message"
                   ]
                 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/confirmation": {
+      "post": {
+        "summary": "Send conformation email again",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+
+        ],
+        "responses": {
+          "200": {
+            "description": "Conformation send successfully please check your email",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Couldn't find an active session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "message"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "email": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "email"
+                    ]
+                  }
+                },
+                "required": [
+                  "user"
+                ]
               }
             }
           }
