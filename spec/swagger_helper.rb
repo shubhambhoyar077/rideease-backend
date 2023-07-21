@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.configure do |config|
@@ -17,7 +15,7 @@ RSpec.configure do |config|
   config.swagger_docs = {
     'v1/swagger.json' => {
       openapi: '3.0.1',
-      # note the new Open API 3.0 compliant security structure here, under "components"
+      # NOTE: the new Open API 3.0 compliant security structure here, under "components"
       components: {
         securitySchemes: {
           bearer_auth: {
