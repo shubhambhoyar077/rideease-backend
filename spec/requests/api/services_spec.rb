@@ -32,15 +32,6 @@ RSpec.describe 'Api::Services', type: :request do
         parameter name: :id, in: :path, type: :string
   
         response '200', 'Car' do
-          schema type: :object,
-            properties: {
-              id: { type: :integer },
-              name: { type: :string },
-              image: { type: :string },
-              price: {type: :string},
-              details: {type: :string},
-            },
-            required: [ 'id', 'name', 'image', 'details', 'price' ]
   
           let(:id) { Service.create(name: 'foo', image: 'bar.jpg').id }
           run_test! do |response|
@@ -58,6 +49,7 @@ RSpec.describe 'Api::Services', type: :request do
 
       delete 'Delete a car' do
         tags 'Cars'
+        consumes 'application/json'
         produces 'application/json'
         parameter name: :id, in: :path, type: :string
   
@@ -95,4 +87,4 @@ RSpec.describe 'Api::Services', type: :request do
 #       end
 #     end
 #   end
-# end
+end

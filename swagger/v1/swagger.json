@@ -10,6 +10,110 @@
     }
   },
   "paths": {
+    "/api/reservations": {
+      "get": {
+        "summary": "get a reserve car as per current user",
+        "tags": [
+          "Reservation"
+        ],
+        "security": [
+          {
+            "bearer_auth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "cars list"
+          }
+        }
+      },
+      "post": {
+        "summary": "Reserve car for current user",
+        "tags": [
+          "Reservation"
+        ],
+        "security": [
+          {
+            "bearer_auth": [
+
+            ]
+          }
+        ],
+        "parameters": [
+
+        ],
+        "responses": {
+          "200": {
+            "description": "Reservation created"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reservations": {
+                    "type": "object",
+                    "properties": {
+                      "city": {
+                        "type": "string"
+                      },
+                      "date": {
+                        "type": "string"
+                      },
+                      "service_id": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "city",
+                      "date",
+                      "service_id"
+                    ]
+                  }
+                },
+                "required": [
+                  "reservations"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reservations/{id}": {
+      "delete": {
+        "summary": "Delete a Reservation",
+        "tags": [
+          "Reservation"
+        ],
+        "security": [
+          {
+            "bearer_auth": [
+
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "delete reservation"
+          }
+        }
+      }
+    },
     "/api/services": {
       "get": {
         "summary": "Retrieves a cars",
@@ -18,44 +122,7 @@
         ],
         "responses": {
           "200": {
-            "description": "cars list",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "image": {
-                      "type": "string"
-                    },
-                    "price": {
-                      "type": "string"
-                    },
-                    "details": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "name",
-                    "image",
-                    "details",
-                    "price"
-                  ]
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Car not found"
-          },
-          "406": {
-            "description": "unsupported accept header"
+            "description": "cars list"
           }
         }
       }
@@ -78,44 +145,28 @@
         ],
         "responses": {
           "200": {
-            "description": "Car",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "image": {
-                      "type": "string"
-                    },
-                    "price": {
-                      "type": "string"
-                    },
-                    "details": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "name",
-                    "image",
-                    "details",
-                    "price"
-                  ]
-                }
-              }
+            "description": "Car"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a car",
+        "tags": [
+          "Cars"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
-          },
-          "404": {
-            "description": "Car not found"
-          },
-          "406": {
-            "description": "unsupported accept header"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Car"
           }
         }
       }
@@ -181,6 +232,9 @@
 
         ],
         "responses": {
+          "200": {
+            "description": "Logged in successfully"
+          },
           "401": {
             "description": "Couldn't find an active session"
           }
@@ -204,6 +258,108 @@
                     "required": [
                       "email",
                       "password"
+                    ]
+                  }
+                },
+                "required": [
+                  "user"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/sign_out": {
+      "delete": {
+        "summary": "User Sign Out",
+        "tags": [
+          "Users"
+        ],
+        "security": [
+          {
+            "bearer_auth": [
+
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Logout successfully"
+          }
+        }
+      }
+    },
+    "/users/confirmation": {
+      "post": {
+        "summary": "Send conformation email again",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+
+        ],
+        "responses": {
+          "200": {
+            "description": "User does not exists"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "email": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "email"
+                    ]
+                  }
+                },
+                "required": [
+                  "user"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/password": {
+      "post": {
+        "summary": "Send forget password email",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+
+        ],
+        "responses": {
+          "200": {
+            "description": "User does not exists"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "email": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "email"
                     ]
                   }
                 },

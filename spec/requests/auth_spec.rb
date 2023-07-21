@@ -104,21 +104,16 @@ RSpec.describe Users::SessionsController, type: :request do
         tags 'Users'
         produces 'application/json'
         security [bearer_auth: []]
-  
-        # response '200', 'Logged out successfully' do
-        #   include Devise::JWT::TestHelpers
 
-        #   before do
-        #     sign_in @user
-        #   end
-    
-        #   let(:jwt_token) { Warden::JWTAuth::UserEncoder.new.call(@user, :user, nil).first }
-      
-        #   # Set the Authorization header with the JWT token
-        #   let(:Authorization) { "Bearer #{jwt_token}" }
-        #       run_test!
-     
-        # end
+        response '200', 'Logout successfully' do
+          before do
+            sign_in @user
+          end
+          include Devise::JWT::TestHelpers
+          let(:jwt_token) { Warden::JWTAuth::UserEncoder.new.call(@user, :user, nil).first }
+          let(:Authorization) { "Bearer #{jwt_token}" }
+          run_test!
+        end
       end
     end
 
