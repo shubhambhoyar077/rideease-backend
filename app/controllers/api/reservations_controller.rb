@@ -3,7 +3,7 @@ class Api::ReservationsController < ApplicationController
   def index
     @reservations = current_user.reservations.includes(:service)
     @reservation_data = @reservations.map do |reservation|
-      { reservation:, service: reservation.service }
+      { reservation:reservation, service: reservation.service }
     end
 
     render json: @reservation_data
