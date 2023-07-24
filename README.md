@@ -11,6 +11,9 @@
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
+  - [📃 API Documentation](#api-docs)
+  - [🗎 Kanban Board](#kanban-board)
+  - [🚀 Live Demo ](#-live-demo-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Prerequisites](#prerequisites-1)
@@ -32,6 +35,7 @@
 RideEase provides a seamless and reliable car booking experience.
 
 **Link for the Frontend repository:** [URL](https://github.com/shubhambhoyar077/rideease-frontend)
+
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
@@ -70,6 +74,29 @@ RideEase provides a seamless and reliable car booking experience.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## 🗎 API Documentation <a name="api-docs"></a>
+
+- Check here API documentation [Rideease app](https://rideease-backend.onrender.com/api-docs/index.html)
+
+<!-- Kanban Board -->
+
+## <img src="https://cdn-icons-png.flaticon.com/512/5360/5360804.png" width="23" height="20"/> Kanban Board <a name="kanban-board"></a>
+
+- Check here [Kanban Board](https://github.com/users/shubhambhoyar077/projects/6)
+- Check here initial state of the [Kanban Board Screenshot](https://user-images.githubusercontent.com/100614799/252989230-9bd992c1-c21a-4356-825c-f965c5f3ee77.JPG)
+
+<!-- React Frontend -->
+
+## <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/539px-React-icon.svg.png" width="23" height="20"/> React Frontend <a name="react-frontend"></a>
+
+- Frontend part of the project [Rideease-frontend](https://github.com/shubhambhoyar077/rideease-frontend)
+
+## 🚀 Live Demo <a name="live-demo"></a>
+
+- [Live Demo](https://rideease.onrender.com/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## 💻 Getting Started <a name="getting-started"></a>
 
 To get a local copy up and running, follow these steps.
@@ -91,20 +118,24 @@ In order to run this project you need:
 
 ### Setup
 
-Clone these repositories by using the command line to your desired folder:  
+Clone these repositories by using the command line to your desired folder:
 
 <u>**For Backend**</u>
+
 ```sh
 git clone https://github.com/shubhambhoyar077/rideease-backend
 
 cd rideease-backend
 ```
+
 <u>**For Frontend**</u>
+
 ```sh
 git clone https://github.com/shubhambhoyar077/rideease-frontend
 
 cd rideease-frontend
 ```
+
 ### Install
 
 Install this project with:
@@ -114,19 +145,36 @@ Install this project with:
 ```sh
   bundle install
 ```
+
 <u>**For Frontend**</u>
+
 ```sh
 npm install
 ```
+
 ### Usage
 
 To run the project, execute the following command:
 <u>**For Backend**</u>
 
 ```sh
+  Set up JWT secret key key as follow:-
+  rails secret (copy secret_key)
+
+  Linux/Mac user:-
+  export DEVISE_JWT_SECRET_KEY=secret_key
+
+  Window user:-
+  set DEVISE_JWT_SECRET_KEY=secret_key
+  or
+  $env:DEVISE_JWT_SECRET_KEY="secret_key"
+
+
   rails server
 ```
+
 <u>**For Frontend**</u>
+
 ```sh
   npm start
 ```
@@ -176,7 +224,6 @@ Not Available
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 ## 🔭 Future Features <a name="future-features"></a>
 
 - Add some payment details.
@@ -184,7 +231,6 @@ Not Available
 - Deploy the application.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 ## 🤝 Contributing <a name="contributing"></a>
 
@@ -194,20 +240,19 @@ Feel free to check the [issues page](https://github.com/shubhambhoyar077/rideeas
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 ## ⭐️ Show your support <a name="support"></a>
 
 If you like this project, kindly give me a ⭐️
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-- We would like to thank [Microverse](https://www.microverse.org/) for this opportunity.
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+I would like to acknowledge:
 
+- [Microverse](https://www.microverse.org/) for the opportunity to work on this project
+- [The creative common](https://www.behance.net/gallery/19759151/Snapscan-iOs-design-and-branding?tracking_source=) for the design
+- Design from [Murat Korkmaz on Behance](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign)
 
 ## ❓ FAQ <a name="faq"></a>
 
@@ -220,7 +265,6 @@ If you like this project, kindly give me a ⭐️
   - [It is very easy to learn compared to most of the programming languages](https://careerkarma.com/blog/why-learn-ruby-on-rails/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 ## 📝 License <a name="license"></a>
 
