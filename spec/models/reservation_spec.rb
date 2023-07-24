@@ -22,5 +22,4 @@ RSpec.describe Reservation, type: :model do
     expect(reservation2.user).to eq(user2)
     expect(reservation2.service).to eq(service1)
   end
-
 end
