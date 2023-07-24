@@ -127,13 +127,13 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.3-x64-mingw-ucrt)
+    nokogiri (1.15.3-x64-unknown)
       racc (~> 1.4)
     nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.5.3)
-    pg (1.5.3-x64-mingw-ucrt)
+    pg (1.5.3-x64-unknown)
     puma (5.6.6)
       nio4r (~> 2.0)
     racc (1.7.1)
@@ -216,7 +216,7 @@ GEM
     zeitwerk (2.6.8)
 
 PLATFORMS
-  x64-mingw-ucrt
+  x64-unknown
   x86_64-linux
 
 DEPENDENCIES
@@ -233,7 +233,7 @@ DEPENDENCIES
   tzinfo-data
 
 RUBY VERSION
-   ruby 3.2.2p53
+   ruby 3.0.1p64
 
 BUNDLED WITH
-   2.4.13
+   2.4.15
