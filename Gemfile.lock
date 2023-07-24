@@ -66,6 +66,8 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    addressable (2.8.4)
+      public_suffix (>= 2.0.2, < 6.0)
     bcrypt (3.1.19)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
@@ -103,6 +105,8 @@ GEM
     io-console (0.6.0)
     irb (1.7.4)
       reline (>= 0.3.6)
+    json-schema (3.0.0)
+      addressable (>= 2.8)
     jwt (2.7.1)
     loofah (2.21.3)
       crass (~> 1.0.2)
@@ -133,7 +137,7 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.5.3)
-    pg (1.5.3-x64-unknown)
+    public_suffix (5.0.3)
     puma (5.6.6)
       nio4r (~> 2.0)
     racc (1.7.1)
@@ -197,12 +201,24 @@ GEM
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
     rspec-support (3.12.1)
+    rswag (2.10.1)
+      rswag-api (= 2.10.1)
+      rswag-specs (= 2.10.1)
+      rswag-ui (= 2.10.1)
+    rswag-api (2.10.1)
+      railties (>= 3.1, < 7.1)
+    rswag-specs (2.10.1)
+      activesupport (>= 3.1, < 7.1)
+      json-schema (>= 2.2, < 4.0)
+      railties (>= 3.1, < 7.1)
+      rspec-core (>= 2.14)
+    rswag-ui (2.10.1)
+      actionpack (>= 3.1, < 7.1)
+      railties (>= 3.1, < 7.1)
     thor (1.2.2)
     timeout (0.4.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    tzinfo-data (1.2023.3)
-      tzinfo (>= 1.0.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     warden-jwt_auth (0.8.0)
@@ -230,10 +246,11 @@ DEPENDENCIES
   rails (~> 7.0.6)
   rails-controller-testing
   rspec-rails
+  rswag
   tzinfo-data
 
 RUBY VERSION
-   ruby 3.0.1p64
+   ruby 3.2.0p0
 
 BUNDLED WITH
-   2.4.15
+   2.4.13
