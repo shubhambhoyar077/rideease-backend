@@ -1,0 +1,178 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/services":
+    get:
+      summary: Retrieves a cars
+      tags:
+      - Cars
+      responses:
+        '200':
+          description: cars list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  image:
+                    type: string
+                  price:
+                    type: string
+                  details:
+                    type: string
+                required:
+                - id
+                - name
+                - image
+                - details
+                - price
+        '404':
+          description: Car not found
+        '406':
+          description: unsupported accept header
+  "/api/services/{id}":
+    get:
+      summary: Retrieves a car
+      tags:
+      - Cars
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Car
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  image:
+                    type: string
+                  price:
+                    type: string
+                  details:
+                    type: string
+                required:
+                - id
+                - name
+                - image
+                - details
+                - price
+        '404':
+          description: Car not found
+        '406':
+          description: unsupported accept header
+  "/users/sign_in":
+    post:
+      summary: User Sign In
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '200':
+          description: Logged in successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                      message:
+                        type: string
+                    required:
+                    - code
+                    - message
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      email:
+                        type: string
+                    required:
+                    - id
+                    - name
+                    - email
+                required:
+                - status
+                - data
+        '401':
+          description: Couldn't find an active session
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                  message:
+                    type: string
+                required:
+                - status
+                - message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  email:
+                    type: string
+                  password:
+                    type: string
+              required:
+              - email
+              - password
+  "/users/sign_out":
+    delete:
+      summary: User Sign Out
+      tags:
+      - Users
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Logged out successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                  message:
+                    type: string
+                required:
+                - status
+                - message
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: 127.0.0.1:4000
