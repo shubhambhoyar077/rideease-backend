@@ -53,6 +53,6 @@ class Api::ServicesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def service_params
-    params.fetch(:service, {})
+    params.require(:service).permit(:name, :price, :details, :duration, :image)
   end
 end
