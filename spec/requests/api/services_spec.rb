@@ -52,31 +52,4 @@ RSpec.describe 'Api::Services', type: :request do
       end
     end
   end
-
-  #   describe 'GET /create' do
-
-  #     path '/api/services' do
-
-  #       post 'Create a car' do
-  #         tags 'Cars'
-  #         produces 'application/json'
-  #         parameter name: :services, in: :body, schema: {
-  #           type: :object,
-  #           properties: {
-  #             name: { type: :string },
-  #             image: { type: :string },
-  #             price: {type: :number},
-  #             details: {type: :string},
-  #             duration: {type: :number},
-  #           },
-  #           required: [ 'name', 'image', 'price' ]
-  #         }
-
-  #         response '201', 'Car created' do
-  #           let(:id) { Service.create(name: 'foo', image: 'bar.jpg', price: 10).id }
-  #           run_test!
-  #         end
-  #       end
-  #     end
-  #   end
 end
