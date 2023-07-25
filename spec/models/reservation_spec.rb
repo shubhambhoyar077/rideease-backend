@@ -21,5 +21,8 @@ RSpec.describe Reservation, type: :model do
 
     expect(reservation2.user).to eq(user2)
     expect(reservation2.service).to eq(service1)
+
+    expect(reservation1.user).not_to eq(user2)
+    expect(reservation2.user).not_to eq(user1)
   end
 end

@@ -21,5 +21,9 @@ RSpec.describe Service, type: :model do
     expect(service1.reservations.count).to eq(1)
     expect(service2.reservations.count).to eq(2)
     expect(service3.reservations.count).to eq(1)
+
+    expect(service1.users).not_to include(user2)
+    expect(service2.users).not_to include(user3)
+    expect(service3.users).not_to include(user1)
   end
 end
