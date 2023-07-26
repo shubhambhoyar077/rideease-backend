@@ -81,6 +81,7 @@ RideEase provides a seamless and reliable car booking experience.
 
 ## <img src="https://cdn-icons-png.flaticon.com/512/5360/5360804.png" width="23" height="20"/> Kanban Board <a name="kanban-board"></a>
 
+- It's a five-member team.
 - Check here [Kanban Board](https://github.com/users/shubhambhoyar077/projects/6)
 - Check here initial state of the [Kanban Board Screenshot](https://user-images.githubusercontent.com/100614799/252989230-9bd992c1-c21a-4356-825c-f965c5f3ee77.JPG)
 
