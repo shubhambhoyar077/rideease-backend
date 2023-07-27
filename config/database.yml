@@ -21,6 +21,7 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+
 development:
   <<: *default
   database: rideeas_backend_development
@@ -82,5 +83,3 @@ test:
 production:
   <<: *default
   database: rideeas_backend_production
-  username: rideeas_backend
-  password: <%= ENV["RIDEEAS_BACKEND_DATABASE_PASSWORD"] %>
